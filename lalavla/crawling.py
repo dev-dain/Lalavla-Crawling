@@ -200,16 +200,32 @@ def load_cat_list():
 
       # cat_index로 tiny_list의 몇 번째 카테고리를 클릭할지 정함
       # ex) 전체 / 기초세트 / 스킨,토너 / 로션 / 에센스,세럼,앰플 / ...        
-      for cat_index in range(len(cats)):
-        items = driver.find_elements_by_class_name('prd-list > ul > li > a')          
+      if cats:
+        for cat_index in range(len(cats)):
+          items = driver.find_elements_by_class_name('prd-list > ul > li > a')          
+          height = driver.execute_script('return (window.innerHeight || document.body.clientHeight)')
+
+          for index in range(len(items)): 
+            if cat_index:
+              cats = driver.find_elements_by_class_name('swiper-slide > a')
+              cats[cat_index].click()
+              sleep(0.3)
+
+            items = driver.find_elements_by_class_name('prd-list > ul > li > a')
+            height += scroll_height 
+            driver.execute_script('window.scrollTo(0, ' + str(height) + ')')
+            sleep(0.5)
+
+            items[index].click()
+            driver.implicitly_wait(3)
+
+            get_product_info(big_list, mid_list, cats_name[cat_index])
+      
+      else:
+        items = driver.find_elements_by_class_name('prd-list > ul > li > a')
         height = driver.execute_script('return (window.innerHeight || document.body.clientHeight)')
 
-        for index in range(len(items)): 
-          if cat_index:
-            cats = driver.find_elements_by_class_name('swiper-slide > a')
-            cats[cat_index].click()
-            sleep(0.3)
-
+        for index in range(len(items)):
           items = driver.find_elements_by_class_name('prd-list > ul > li > a')
           height += scroll_height 
           driver.execute_script('window.scrollTo(0, ' + str(height) + ')')
@@ -218,7 +234,7 @@ def load_cat_list():
           items[index].click()
           driver.implicitly_wait(3)
 
-          get_product_info(big_list, mid_list, cats_name[cat_index])
+          get_product_info(big_list, mid_list, '전체')
 
 
 if __name__ == '__main__':
