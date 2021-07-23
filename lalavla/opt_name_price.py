@@ -6,7 +6,7 @@ from collections import OrderedDict
 from time import sleep
 from selenium import webdriver
 
-driver = webdriver.Chrome("C:\\Python38\\chromedriver")
+driver = webdriver.Chrome("chrome web 드라이버 경로")
 url = 'https://m.lalavla.com/service/products/productDetail.html?prdId=10003882' 
 driver.get(url)
 driver.implicitly_wait(3)

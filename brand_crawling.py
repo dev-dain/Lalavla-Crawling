@@ -6,12 +6,11 @@
 import os
 import sys
 import json
-import pymysql.cursors
 from collections import OrderedDict
 from time import sleep
 from selenium import webdriver
 
-driver = webdriver.Chrome("C:\\Users\\daven\\AppData\\Local\\Programs\\Python\\Python38\\chromedriver")
+driver = webdriver.Chrome("chrome 웹 드라이버 경로")
 url = 'https://m.lalavla.com/service/main/mainBrand.html'
 data = OrderedDict()
 

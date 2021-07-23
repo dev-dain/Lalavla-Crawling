@@ -21,7 +21,7 @@ goods_list = {
 truth_table = {'True': 'Y', 'False': 'N'}
 
 # 크롬드라이버 위치 절대경로로 설정
-driver = webdriver.Chrome("C:\\Python38\\chromedriver")
+driver = webdriver.Chrome("chrome 웹 드라이버 경로")
 url = 'https://www.oliveyoung.co.kr/store/display/getMCategoryList.do?dispCatNo='
 data = OrderedDict()
 

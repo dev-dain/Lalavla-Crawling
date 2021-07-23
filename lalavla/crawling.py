@@ -8,7 +8,7 @@ from selenium import webdriver
 from lalavla_category import category_list as cat_list
 
 # 크롬드라이버 위치 절대경로로 설정
-driver = webdriver.Chrome("C:\\Python38\\chromedriver")
+driver = webdriver.Chrome("web driver 경로")
 url = 'https://m.lalavla.com/service/products/productCategory.html?CTG_ID='
 data = OrderedDict()
 
